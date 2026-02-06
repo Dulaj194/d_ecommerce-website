@@ -60,7 +60,7 @@ cd ecommrce
 Create MySQL database:
 
 ```sql
-CREATE DATABASE ecommerce_db;
+CREATE DATABASE d_ecommerce_db;
 ```
 
 The application will automatically create tables on first run. Sample data is provided in `backend/src/main/resources/data.sql`.
@@ -78,7 +78,7 @@ Update database credentials in `src/main/resources/application.properties`:
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.password=####
 ```
 
 Build and run:

@@ -25,8 +25,13 @@ export default function AdminProductsPage() {
     categoryId: '',
   });
 
+  // Load user once on mount
   useEffect(() => {
     loadUser();
+  }, []);
+
+  // Authentication and data fetching
+  useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');
       return;
@@ -37,7 +42,7 @@ export default function AdminProductsPage() {
     }
     fetchProducts();
     fetchCategories();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user?.role]);
 
   const fetchProducts = async () => {
     try {

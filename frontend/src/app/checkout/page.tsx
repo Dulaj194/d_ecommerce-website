@@ -17,8 +17,13 @@ export default function CheckoutPage() {
   const { isAuthenticated, loadUser } = useAuthStore();
   const router = useRouter();
 
+  // Load user once on mount
   useEffect(() => {
     loadUser();
+  }, []);
+
+  // Authentication and data fetching
+  useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');
       return;

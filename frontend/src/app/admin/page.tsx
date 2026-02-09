@@ -17,8 +17,13 @@ export default function AdminDashboard() {
   });
   const [loading, setLoading] = useState(true);
 
+  // Load user once on mount
   useEffect(() => {
     loadUser();
+  }, []);
+
+  // Authentication and data fetching
+  useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');
       return;
@@ -28,7 +33,7 @@ export default function AdminDashboard() {
       return;
     }
     fetchStats();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user?.role]);
 
   const fetchStats = async () => {
     try {

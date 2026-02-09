@@ -16,8 +16,13 @@ export default function AdminOrdersPage() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [newStatus, setNewStatus] = useState('');
 
+  // Load user once on mount
   useEffect(() => {
     loadUser();
+  }, []);
+
+  // Authentication and data fetching
+  useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');
       return;
@@ -27,7 +32,7 @@ export default function AdminOrdersPage() {
       return;
     }
     fetchOrders();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user?.role]);
 
   const fetchOrders = async () => {
     try {

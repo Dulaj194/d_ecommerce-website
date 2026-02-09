@@ -16,8 +16,13 @@ export default function AdminCategoriesPage() {
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [categoryName, setCategoryName] = useState('');
 
+  // Load user once on mount
   useEffect(() => {
     loadUser();
+  }, []);
+
+  // Authentication and data fetching
+  useEffect(() => {
     if (!isAuthenticated) {
       router.push('/login');
       return;
@@ -27,7 +32,7 @@ export default function AdminCategoriesPage() {
       return;
     }
     fetchCategories();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user?.role]);
 
   const fetchCategories = async () => {
     try {

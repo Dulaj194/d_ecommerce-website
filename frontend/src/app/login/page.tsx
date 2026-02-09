@@ -18,9 +18,13 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await login(email, password);
+      const loggedInUser = await login(email, password);
       toast.success('Login successful!');
-      router.push('/products');
+      if (loggedInUser.role === 'ADMIN') {
+        router.push('/admin');
+      } else {
+        router.push('/products');
+      }
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Login failed');
     } finally {

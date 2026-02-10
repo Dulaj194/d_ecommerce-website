@@ -50,23 +50,19 @@ export default function Navbar() {
       {/* Top Navbar */}
       <nav className="bg-white fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
         <div className="flex items-center justify-between px-6 py-4">
-          {/* Left Side - Menu Toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex flex-col gap-1.5 hover:opacity-70 transition-opacity"
-            aria-label="Menu"
-          >
-            <span className="w-6 h-0.5 bg-black"></span>
-            <span className="w-6 h-0.5 bg-black"></span>
-          </button>
+          {/* Left Side - Menu Toggle + Brand */}
+          <div className="flex items-center gap-6">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="flex flex-col gap-1.5 p-3 -m-3 hover:opacity-70 transition-opacity"
+              aria-label="Menu"
+            >
+              <span className="w-6 h-0.5 bg-black"></span>
+              <span className="w-6 h-0.5 bg-black"></span>
+            </button>
 
-          {/* Center - Brand Logo */}
-          <Link 
-            href="/" 
-            className="text-3xl font-bold tracking-tighter hover:opacity-70 transition-opacity"
-          >
-            LuminousOne
-          </Link>
+            {/* Brand hidden per request */}
+          </div>
 
           {/* Right Side - Actions */}
           <div className="flex items-center gap-6">
@@ -151,84 +147,90 @@ export default function Navbar() {
       >
         <div className="h-full flex flex-col">
           {/* Header with Brand and Close Button */}
-          <div className="flex items-center justify-between px-12 py-6 border-b border-gray-100">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="flex flex-col gap-1.5 hover:opacity-70 transition-opacity"
-              aria-label="Close menu"
-            >
-              <span className="w-6 h-0.5 bg-black transform rotate-45 translate-y-1"></span>
-              <span className="w-6 h-0.5 bg-black transform -rotate-45 -translate-y-0.5"></span>
-            </button>
-            <h2 className="text-4xl font-bold tracking-tighter absolute left-1/2 transform -translate-x-1/2">
-              LuminousOne
-            </h2>
+          <div className="border-b border-gray-100">
+            <div className="max-w-7xl mx-auto flex items-center gap-8 px-6 py-4">
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="flex flex-col gap-1.5 p-3 -m-3 hover:opacity-70 transition-opacity"
+                aria-label="Close menu"
+              >
+                <span className="w-6 h-0.5 bg-black transform rotate-45 translate-y-1"></span>
+                <span className="w-6 h-0.5 bg-black transform -rotate-45 -translate-y-0.5"></span>
+              </button>
+              <h2 className="text-5xl sm:text-6xl font-serif font-semibold tracking-[0.08em] leading-none uppercase">
+                LUMINOUSONE
+              </h2>
+            </div>
           </div>
 
           {/* 3-Column Layout */}
-          <div className="flex-1 grid grid-cols-12 gap-12 px-12 py-8 overflow-hidden">
-            {/* LEFT COLUMN - Main Navigation */}
-            <div className="col-span-2">
-              <nav className="flex flex-col space-y-2">
+          <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="max-w-7xl mx-auto grid grid-cols-12 gap-12 px-6 py-8 h-full min-h-0">
+              {/* LEFT COLUMN - Main Navigation */}
+              <div className="col-span-3">
+                <nav className="flex flex-col space-y-3 text-3xl font-serif tracking-tight leading-10">
                 <Link
                   href="/products?category=women"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-light hover:opacity-60 transition-opacity py-2"
+                  className="hover:opacity-60 transition-opacity"
                 >
                   WOMAN
                 </Link>
                 <Link
                   href="/products?category=men"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-light hover:opacity-60 transition-opacity py-2"
+                  className="hover:opacity-60 transition-opacity"
                 >
                   MAN
                 </Link>
                 <Link
                   href="/products?category=kids"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-light hover:opacity-60 transition-opacity py-2"
+                  className="hover:opacity-60 transition-opacity"
                 >
                   KIDS
                 </Link>
                 <Link
                   href="/products?category=travel"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-light hover:opacity-60 transition-opacity py-2"
+                  className="hover:opacity-60 transition-opacity"
                 >
                   TRAVEL MODE
                 </Link>
-              </nav>
-            </div>
+                </nav>
+              </div>
 
-            {/* MIDDLE COLUMN - Featured Categories */}
-            <div className="col-span-6 overflow-y-auto pr-8 border-r border-gray-200 menu-scroll">
-              <div className="space-y-8">
+              {/* MIDDLE COLUMN - Featured Categories */}
+              <div className="col-span-5 h-full overflow-y-auto pr-6 border-r border-gray-200 menu-scroll">
+                <div className="space-y-10 pt-6 max-w-sm">
               {/* [01] NEW IN */}
               <div className="flex gap-6">
-                <div className="flex items-start gap-2 pt-0.5">
-                  <span className="text-xs text-gray-500">[01]</span>
-                  <h3 className="text-sm font-semibold tracking-wider whitespace-nowrap">NEW IN</h3>
+                <div className="flex items-start gap-3 pt-0.5 min-w-[150px]">
+                  <span className="w-px h-3 bg-gray-400 mt-1"></span>
+                  <span className="text-[11px] text-gray-500 tracking-widest">[01]</span>
+                  <h3 className="text-[12px] font-medium tracking-[0.2em] whitespace-nowrap">
+                    NEW IN
+                  </h3>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3 text-[13px] tracking-wide uppercase">
                   <Link
                     href="/products?filter=new"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block text-sm hover:underline"
+                    className="block hover:underline"
                   >
                     THE NEW
                   </Link>
                   <Link
                     href="/products?filter=valentine"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block text-sm hover:underline text-red-600"
+                    className="block hover:underline text-red-600"
                   >
                     VALENTINE&apos;S DAY
                   </Link>
                   <Link
                     href="/products?filter=featured"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block text-sm hover:underline"
+                    className="block hover:underline"
                   >
                     THE ITEM
                   </Link>
@@ -237,78 +239,81 @@ export default function Navbar() {
 
               {/* [02] COLLECTION */}
               <div className="flex gap-6">
-                <div className="flex items-start gap-2 pt-0.5">
-                  <span className="text-xs text-gray-500">[02]</span>
-                  <h3 className="text-sm font-semibold tracking-wider whitespace-nowrap">COLLECTION</h3>
+                <div className="flex items-start gap-3 pt-0.5 min-w-[150px]">
+                  <span className="w-px h-3 bg-gray-400 mt-1"></span>
+                  <span className="text-[11px] text-gray-500 tracking-widest">[02]</span>
+                  <h3 className="text-[12px] font-medium tracking-[0.2em] whitespace-nowrap">
+                    COLLECTION
+                  </h3>
                 </div>
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-col space-y-3 text-[13px] tracking-wide uppercase">
                   <Link
                     href="/products?filter=jackets"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline font-semibold"
                   >
                     JACKETS
                   </Link>
                   <Link
                     href="/products?filter=coats"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     COATS
                   </Link>
                   <Link
                     href="/products?filter=blazers"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     BLAZERS
                   </Link>
                   <Link
                     href="/products?filter=knitwear"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     KNITWEAR
                   </Link>
                   <Link
                     href="/products?filter=tshirts"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     T-SHIRTS
                   </Link>
                   <Link
                     href="/products?filter=tops"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     TOPS
                   </Link>
                   <Link
                     href="/products?filter=shirts"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     SHIRTS
                   </Link>
                   <Link
                     href="/products?filter=jeans"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     JEANS
                   </Link>
                   <Link
                     href="/products?filter=trousers"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     TROUSERS
                   </Link>
                   <Link
                     href="/products?filter=dresses"
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-sm hover:underline"
+                    className="hover:underline"
                   >
                     DRESSES
                   </Link>
@@ -317,16 +322,17 @@ export default function Navbar() {
 
               {/* [03] SPECIAL PRICES */}
               <div className="flex gap-6">
-                <div className="flex items-start gap-2 pt-0.5">
-                  <span className="text-xs text-gray-500">[03]</span>
-                  <h3 className="text-sm font-semibold tracking-wider whitespace-nowrap">
+                <div className="flex items-start gap-3 pt-0.5 min-w-[150px]">
+                  <span className="w-px h-3 bg-gray-400 mt-1"></span>
+                  <span className="text-[11px] text-gray-500 tracking-widest">[03]</span>
+                  <h3 className="text-[12px] font-medium tracking-[0.2em] whitespace-nowrap">
                     SPECIAL PRICES <span className="text-red-600 text-xs">NEW</span>
                   </h3>
                 </div>
                 <Link
                   href="/products?filter=sale"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block text-sm hover:underline pt-0.5"
+                  className="block text-[13px] tracking-wide uppercase hover:underline pt-0.5"
                 >
                   SALE
                 </Link>
@@ -382,9 +388,9 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN - Featured Images */}
-            <div className="col-span-4">
-              <div className="space-y-4">
+              {/* RIGHT COLUMN - Featured Images */}
+              <div className="col-span-4 flex justify-end">
+                <div className="space-y-4 w-full max-w-[220px] pt-2">
                 {/* Featured Image 1 - NEW IN */}
                 <Link
                   href="/products?filter=new"
@@ -401,21 +407,7 @@ export default function Navbar() {
                   </div>
                 </Link>
 
-                {/* Featured Image 2 - COLLECTION */}
-                <Link
-                  href="/products?filter=featured"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block aspect-[4/5] bg-gray-100 hover:opacity-90 transition-opacity relative overflow-hidden group"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=500&fit=crop"
-                    alt="Featured Styles"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                    <p className="text-white text-sm font-semibold">FEATURED STYLES</p>
-                  </div>
-                </Link>
+                </div>
               </div>
             </div>
           </div>

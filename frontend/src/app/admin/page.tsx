@@ -87,7 +87,10 @@ export default function AdminDashboard() {
       {/* Quick Actions */}
       <div className="card mb-8">
         <h2 className="text-xl font-bold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link href="/admin/hero-banners" className="btn-primary text-center">
+            Manage Hero Banners
+          </Link>
           <Link href="/admin/products" className="btn-primary text-center">
             Manage Products
           </Link>

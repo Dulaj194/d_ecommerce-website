@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import apiClient from '@/lib/api';
 import { Category, Product, ProductsResponse } from '@/types';
+import HelpModal from './HelpModal';
 
 export default function Navbar() {
   const { user, isAuthenticated, logout, loadUser } = useAuthStore();
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
   const [menuCategories, setMenuCategories] = useState<Category[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<Record<number, Product[]>>({});
   const [menuLoading, setMenuLoading] = useState(false);
@@ -301,12 +303,12 @@ export default function Navbar() {
             )}
 
             {/* Help */}
-            <Link 
-              href="/help"
+            <button 
+              onClick={() => setShowHelpModal(true)}
               className="text-xs tracking-wider hover:opacity-70 transition-opacity"
             >
               Help
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -481,6 +483,9 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
+
+      {/* Help Modal */}
+      <HelpModal isOpen={showHelpModal} onClose={() => setShowHelpModal(false)} />
 
       {/* Spacing for fixed navbar */}
       <div className="h-16"></div>

@@ -48,3 +48,10 @@ INSERT INTO products (name, description, price, stock, image_url, category_id) V
 ('Dumbbell Set', '20kg adjustable dumbbell set', 89.99, 35, 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?w=400', 5),
 ('Tennis Racket', 'Professional tennis racket', 149.99, 28, 'https://images.unsplash.com/photo-1617083278895-9ff84a0b3e48?w=400', 5)
 ON DUPLICATE KEY UPDATE name=name;
+
+-- Sample data for hero banners
+INSERT INTO hero_banners (image_url, title, subtitle, display_order, is_active, created_at, updated_at) VALUES
+('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600', 'Summer Collection 2024', 'Discover the latest trends with up to 50% off on selected items', 1, true, NOW(), NOW()),
+('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600', 'Tech Innovation', 'Explore cutting-edge electronics and smart devices', 2, true, NOW(), NOW()),
+('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600', 'Fitness Revolution', 'Get fit with premium sports equipment and apparel', 3, true, NOW(), NOW())
+ON DUPLICATE KEY UPDATE image_url=image_url;

@@ -89,3 +89,21 @@ export interface CheckoutRequest {
   phone: string;
   paymentMethod: string;
 }
+export interface HeroBanner {
+  id: number;
+  imageUrl: string;
+  title?: string;
+  subtitle?: string;
+  displayOrder: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface HeroBannerRequest {
+  imageUrl: string;
+  title?: string;
+  subtitle?: string;
+  displayOrder: number;
+  isActive: boolean;
+}

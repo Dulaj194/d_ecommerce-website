@@ -127,7 +127,11 @@ export default function ProductsPage() {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
-              <Link key={product.id} href={`/products/${product.id}`}>
+              <Link
+                key={product.id}
+                href={`/products/${product.id}`}
+                className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 rounded-lg"
+              >
                 <div className="card hover:shadow-lg transition-shadow cursor-pointer h-full flex flex-col">
                   {product.imageUrl && (
                     <div className="relative h-48 mb-4">
@@ -148,6 +152,7 @@ export default function ProductsPage() {
                       {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
                     </span>
                   </div>
+                  <span className="text-sm font-medium text-primary-600 mt-3">View details</span>
                 </div>
               </Link>
             ))}
